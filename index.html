@@ -5,21 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./dist/main.css">
-    <script src="./dist/main.js"></script>
-    <title>Pedal To The Metal</title>
-    <style>
-        body {
-            background-color: blueviolet;
-            text-align: center;
-            overflow: hidden;
-        }
-    </style>
 
+    <link rel="stylesheet" href="src/styles/driver.css">
+    <link rel="stylesheet" href="src/styles/map.css">
+    <link rel="stylesheet" href="src/styles/lifesaver.css">
+    <script src="./dist/main.js"></script>
+    <title>SpeedBoat Rescue</title>
 </head>
 <body>
-    <h1>Welcome to Pedal to the Metal!</h1>
-    <canvas id="gamecanvas"></canvas> 
-    <canvas id="car"></canvas>
 
+    
+    <div class="map">
+        <div class="ocean">
+            <canvas id="screen"></canvas>
+            <!-- <canvas id="rescue"></canvas> -->
+            <div class="boats"></div>
+                <div class="driver">
+                    <div class="boatshape">
+                        <div class="boattop">
+                            <div class="lefthead">
+                                <div class="righthead">
+                                </div></div></div></div>  
+                                <div class="lifesaver"></div> 
+            </div>
+        </div>
+    </div>
+
+    <div class="score"></div>
+    <script src="src/scripts/controls.js"></script>
+    <script src="src/scripts/driver.js"></script>
+    <script src="src/scripts/lifesaver.js"></script>
 </body>
 </html>
+
