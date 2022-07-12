@@ -1,3 +1,38 @@
+var c,ctx;
+
+var x = 10;
+var interval = 1000
+// onload=setInterval(stopit5,1000);
+
+//function to generate random circle parameters, x,y and radius
+for (var i = 0; i < x; i++) {
+    setTimeout(randomize, i * interval)
+}
+
+function randomize(){
+ // console.log("here");
+  c = document.getElementById("screen");
+  ctx = c.getContext("2d");
+//   var rr = Math.ceil((30* Math.random())+5)
+  var rr = 10;
+  var rx = Math.ceil(290* Math.random());
+  var ry = Math.ceil(290* Math.random());
+
+  drawCircle(rx,ry,rr);  
+}
+
+function drawCircle(rx,ry,rr){
+  var myColors = "orange";
+  ctx.strokeStyle = myColors;
+  ctx.beginPath();
+  ctx.arc(rx,ry,rr,0,2*Math.PI);
+  ctx.stroke();
+  ctx.closePath();
+}
+
+
+
+
 // lifesavers---------------------------
 // const $rescue = document.getElementById('rescue');
 

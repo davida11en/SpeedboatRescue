@@ -7,7 +7,7 @@ const $canvas = document.getElementById('screen');
 $canvas.width = WIDTH;
 $canvas.height = HEIGHT;
 
-const ctx = $canvas.getContext('2d');
+// const ctx = $canvas.getContext('2d');
 
 ctx.fillStyle = 'rgb(255, 255, 255)'; //trail fill
 //---------------------screen view end
@@ -15,8 +15,10 @@ ctx.fillStyle = 'rgb(255, 255, 255)'; //trail fill
 //boat parameters------------------------
 const amarillo = {
     $el: document.querySelector('.driver'),
-    x: WIDTH / 2, //positioned at center
-    y: HEIGHT / 2,
+    // x: WIDTH / 2, //positioned at center
+    // y: HEIGHT / 2,
+    x: 80,
+    y: 730,
     xVelocity: 0,
     yVelocity: 0,
     knots: 0,
@@ -236,6 +238,8 @@ const ocean = {
     y: window.innerHeight / 2 - amarillo.y
 };
 //---------------------------------boat camera done
+
+
 
 // render game--------------------------------
 const $ocean = document.querySelector('.ocean');
