@@ -7,7 +7,7 @@ const $canvas = document.getElementById('screen');
 $canvas.width = WIDTH;
 $canvas.height = HEIGHT;
 
-// const ctx = $canvas.getContext('2d');
+const ctx = $canvas.getContext('2d');
 
 ctx.fillStyle = 'rgb(255, 255, 255)'; //trail fill
 //---------------------screen view end
@@ -15,10 +15,8 @@ ctx.fillStyle = 'rgb(255, 255, 255)'; //trail fill
 //boat parameters------------------------
 const amarillo = {
     $el: document.querySelector('.driver'),
-    // x: WIDTH / 2, //positioned at center
-    // y: HEIGHT / 2,
-    x: 80,
-    y: 730,
+    x: WIDTH / 2, //positioned at center
+    y: HEIGHT / 2,
     xVelocity: 0,
     yVelocity: 0,
     knots: 0,
@@ -27,6 +25,9 @@ const amarillo = {
     driftSpeed: 0, 
     score: 0
 };
+
+// console.log('looking for boat details', amarillo)
+
 
 const boats = [amarillo];
 
@@ -80,6 +81,7 @@ function moveBoat(boat) {
 
     boat.knots = Math.max(0, Math.min(maxKnots, boat.knots));
     boat.reverse = Math.max(0, Math.min(maxReverse, boat.reverse));
+    
 } 
 
 function turnBoat(boat) {
@@ -102,6 +104,8 @@ function turnBoat(boat) {
     boat.yVelocity *= drift;
     boat.drift += boat.driftSpeed;
     boat.driftSpeed *= driftSpeed;
+    // console.log('boat move', boat.x)
+    // console.log('boat move2', boat.y)
 }
 //---------------------boat movement end
 
@@ -110,6 +114,7 @@ function turnBoat(boat) {
 function updateBoatPosition() {
     boats.forEach(moveBoat);
     boats.forEach(turnBoat);
+    
 }
 // ----------------------update boat position end
 
@@ -141,6 +146,9 @@ const motionControls = () => {
         userInput = true;
         amarillo.isTurningRight = turnRight;
     }
+
+    // console.log('boat move', amarillo.x)
+    // console.log('boat move2', amarillo.y)
 }
 // ----------------------------controls action end
 
@@ -229,6 +237,8 @@ function renderBoat (boat) {
         );
  
     }
+    //     console.log('boat move', boat.x)
+    // console.log('boat move2', boat.y)
 };
 // -----------------------------------------------rendering boat end
 
@@ -244,15 +254,20 @@ const ocean = {
 // render game--------------------------------
 const $ocean = document.querySelector('.ocean');
 function render(ms) {
+    // console.log('boat move', amarillo.x)
+    // console.log('boat move2', amarillo.y)
     requestAnimationFrame(render);
 
     boats.forEach(renderBoat);
 
     ocean.x = window.innerWidth / 2 - amarillo.x;
     ocean.y = window.innerHeight / 2 - amarillo.y;
-
+    //  console.log('boat move', amarillo.x)
+    // console.log('boat move2', amarillo.y)
     $ocean.style.transform = `translate(${ocean.x}px, ${ocean.y}px)`;
 }
+//    console.log('boat move', amarillo.x)
+//     console.log('boat move2', amarillo.y)
 
 requestAnimationFrame(render);
 // ----------------------------render game end

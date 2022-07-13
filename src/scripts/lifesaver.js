@@ -1,115 +1,100 @@
-var c,ctx;
+var c,ltx;
 
 var x = 10;
-var interval = 1000
+var cords = [];
 // onload=setInterval(stopit5,1000);
 
-//function to generate random circle parameters, x,y and radius
+// loads screen 
 for (var i = 0; i < x; i++) {
-    setTimeout(randomize, i * interval)
+
+    // console.log("is this thing on?", cords)
+   onload = setTimeout(randomize)
+//    console.log("is this thing on?2", cords.length)
 }
 
-function randomize(){
- // console.log("here");
-  c = document.getElementById("screen");
-  ctx = c.getContext("2d");
-//   var rr = Math.ceil((30* Math.random())+5)
-  var rr = 10;
-  var rx = Math.ceil(290* Math.random());
-  var ry = Math.ceil(290* Math.random());
+//function to generate random circle placement, x,y and radius
 
-  drawCircle(rx,ry,rr);  
+function randomize(){
+    // console.log("here");
+    c = document.getElementById("screen");
+    ltx = c.getContext("2d");
+    //   var rr = Math.ceil((30* Math.random())+5)
+    var rr = 10;
+    var rx = Math.ceil(1100* Math.random());
+    var ry = Math.ceil(1100* Math.random());
+    console.log('lookin for length111', cords.length)
+    drawCircle(rx,ry,rr);  
+    console.log('lookin for length222', cords.length)
+    cords.push([rx,ry])
+
+    // while (cords.length > 1) {
+    //         console.log('test')
+    // const curX = amarillo.x
+    // const curY = amarillo.y
+
+    // for (var i = 0; i < cords.length; i++) {
+    //     let cordX = cords[i][0]
+    //     let cordY = cords[i][1]
+
+    //     if (Math.abs(curX - cordX) < 10) {
+    //         console.log('Xhit')
+    //         cords.splice(i, 1)
+    //     } else if (Math.abs(curY - cordY) < 10) {
+    //         console.log('Yhit')
+    //         cords.splice(i, 1)
+    //     }
+    // }
+
+    // }
+
 }
 
 function drawCircle(rx,ry,rr){
   var myColors = "orange";
-  ctx.strokeStyle = myColors;
-  ctx.beginPath();
-  ctx.arc(rx,ry,rr,0,2*Math.PI);
-  ctx.stroke();
-  ctx.closePath();
+  ltx.lineWidth = 20;
+  ltx.strokeStyle = myColors;
+  ltx.beginPath();
+  ltx.arc(rx,ry,rr,0,2*Math.PI);
+  ltx.stroke();
+  ltx.closePath();
 }
 
+console.log('lookin for cords', cords);
+console.log('boat?', amarillo)
 
 
+/**
+ * janky logic
+ * amarillo x === cords[i][0]
+ * amarillo y === cords[i][1]
+ * 
+ * we're going to need current x and current y
+ * if current x or current y 
+ * for now if either x or y have a difference of less than 8 they've colided
+ * 
+ * until cords.length is empty meaning no more rescues keep this loop going
+ * if boat touches any circle print hit
+ * 
+ */
+console.log(cords[0])
 
-// lifesavers---------------------------
-// const $rescue = document.getElementById('rescue');
+// while (cords.length > 10) {
+//     // console.log("is this thing on?")
+//     const curX = amarillo.x
+//     const curY = amarillo.y
 
+//     for (var i = 0; i < cords.length; i++) {
+//         let cordX = cords[i][0]
+//         let cordY = cords[i][1]
 
-// const ring = $rescue.getContext('2d');
-// // $rescue.height = 25;
-// // $rescue.width = 25;
-// ring.fillStyle = 'rgb(255, 90, 8)';
-// ring.stroke(-10, -10, 24, 24)
-// -----------------------------------lifesavers end
+//         if (Math.abs(curX - cordX) < 10) {
+//             console.log('Xhit')
+//             cords.splice(i, 1)
+//         } else if (Math.abs(curY - cordY) < 10) {
+//             console.log('Yhit')
+//             cords.splice(i, 1)
+//         }
+//     }
 
-
-// const $lifesaver = document.querySelector('.lifesaver');
-
-// const RANDX = Math.floor(Math.random() * 801) + 200;
-// const RANDY = Math.floor(Math.random() * 801) + 200;
-
-// const lifesaver = {
-//     $el: document.querySelector('.lifesaver'),
-//     x: RANDX,
-//     y: RANDY
 // }
 
-
-// const circle = function (centerX, centerY, radius, color) {
-//     this.centerX = centerX;
-//     this.centerY = centerY;
-//     this.radius = radius;
-//     this.color = color;
-//   };
-  
-//   Circle.randomCircle = function (maxX, maxY, numCircles) {
-//     return new Circle(
-//       maxX * Math.random(),
-//       maxY * Math.random(),
-//       Circle.radius(maxX, maxY, numCircles),
-//       Circle.randomColor()
-//     );
-//   };
-  
-//   const HEX_DIGITS = "0123456789ABCDEF";
-  
-//   Circle.randomColor = function () {
-//     let color = "#";
-//     for (let i = 0; i < 6; i++) {
-//       color += HEX_DIGITS[Math.floor((Math.random() * 16))];
-//     }
-  
-//     return color;
-//   };
-  
-//   Circle.radius = function (maxX, maxY, numCircles) {
-//     let targetCircleArea = (maxX * maxY) / numCircles;
-//     let targetRadius = Math.sqrt(targetCircleArea / Math.PI);
-//     return 2 * targetRadius;
-//   };
-  
-//   Circle.prototype.moveRandom = function (maxX, maxY) {
-//     let dx = (Math.random() * 2) - 1;
-//     let dy = (Math.random() * 2) - 1;
-  
-//     this.centerX = Math.abs((this.centerX + (dx * this.radius * 0.1)) % maxX);
-//     this.centerY = Math.abs((this.centerY + (dy * this.radius) * 0.1) % maxY);
-//   };
-  
-//   Circle.prototype.render = function (ctx) {
-//     ctx.fillStyle = this.color;
-//     ctx.beginPath();
-  
-//     ctx.arc(
-//       this.centerX,
-//       this.centerY,
-//       this.radius,
-//       0,
-//       2 * Math.PI,
-//       false
-//     );
-  
-//     ctx.fill();
-//   };
