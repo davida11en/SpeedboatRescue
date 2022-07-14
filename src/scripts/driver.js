@@ -254,6 +254,7 @@ const ocean = {
 // render game--------------------------------
 const $ocean = document.querySelector('.ocean');
 function render(ms) {
+    // console.log('garage', boats)
     // console.log('boat move', amarillo.x)
     // console.log('boat move2', amarillo.y)
     requestAnimationFrame(render);
