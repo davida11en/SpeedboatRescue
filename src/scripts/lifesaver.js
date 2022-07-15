@@ -84,22 +84,43 @@ document.addEventListener('keydown', function(e) {
         var cordX = cords[i][0]
         var cordY = cords[i][1]
 
-        console.log(curX - cordX);
+        console.log('life x', cordX); // life x 375
+        console.log('boat x', curX); // lifesaver.js:88 boat x 454.1293141041299
+        console.log('XCORD DIFF', Math.abs(curX - cordX)); // lifesaver.js:89 XCORD DIFF 79.12931410412989
+        console.log('boat y', curY); // lifesaver.js:90 boat y 573.1367017988306
+        console.log('life y', cordY) // lifesaver.js:91 life y 470
+        console.log('YCORD DIFF', Math.abs(curY - cordY)); //lifesaver.js:92 YCORD DIFF 103.13670179883059
+
+        
+
+
+
+
+
+
+        //      console.log('life x', cordX);
+        //       console.log('boat x', curX);
+        // console.log('XCORD DIFF', Math.abs(curX - cordX));
+        //                console.log('boat y', curY);
+        //       console.log('life y', cordY)
+        // console.log('YCORD DIFF', Math.abs(curY - cordY));
         // console.log('boat y', curY);
         // console.log('OG COREDS', cords);
         // console.log('life y', cordY)
         // while (cords.length > 0) {
-          if (Math.abs(curX - cordX) < 2 || Math.abs(curY - cordY) < 2) {
-              console.log('HIT+++++')
-              console.log('life x', cordX);
-              console.log('boat x', curX);
-              console.log('boat y', curY);
-              console.log('life y', cordY)
-              
-              console.log('CORDS', cords.length)
-              cords.splice(i, 1)
-              console.log('CORDS cut', cords)
-          }
+          // if (Math.abs(curX - cordX) < 2 || Math.abs(curY - cordY) < 2) {
+          //     console.log('HIT+++++')
+          //     console.log('life x', cordX);
+          //     console.log('boat x', curX);
+          //     console.log('XCORD DIFF', Math.abs(curX - cordX));
+          //     console.log('boat y', curY);
+          //     console.log('life y', cordY)
+     
+          //     console.log('CORDS', cords.length)
+          //     cords.splice(i, 1)
+          //     console.log('CORDS cut', cords)
+          //     console.log('CORDS', cords.length)
+          // }
         // }
         // } else if (Math.abs(curY - cordY) < 5) {
         //     console.log('Yhit')
