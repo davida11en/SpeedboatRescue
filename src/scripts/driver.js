@@ -15,7 +15,7 @@ ctx.fillStyle = 'rgb(255, 255, 255)'; //trail fill
 //boat parameters------------------------
 const amarillo = {
     $el: document.querySelector('.driver'),
-    x: WIDTH / 2, //positioned at center
+    x: (WIDTH / 2) + .5, //positioned at center
     y: HEIGHT / 2,
     xVelocity: 0,
     yVelocity: 0,

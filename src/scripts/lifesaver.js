@@ -51,26 +51,67 @@ function drawCircle(rx,ry,rr){
 
 var elem = document.querySelector('.driver')
 let rect = elem.getBoundingClientRect();
-
-
+console.log('OG COREDS', cords);
+// var copy = Object.assign
 
 document.addEventListener('keydown', function(e) {
     // returning coordinates of boat
     console.log('BOATX', amarillo.x)
-    // console.log('BOATY', amarillo.y)
+    console.log('BOATY', amarillo.y)
     // console.log(getComputedStyle(elem))
-    console.log('CORDS', cords)
+    // console.log('CORDS', cords)
+    // console.log('CORDS', cords.length)
     // console.log('RY', ry)
     // console.log(rect)
 
 
-    if (amarillo.x > 700) {
-      console.log('TEST RUN OVER 7 ');
-      cords.pop();
-      console.log('arr length', cords.length)
-    } else if (amarillo.y < 350){
-      console.log('TEST RUNDER 4')
+    // if (amarillo.x > 700) {
+    //   console.log('TEST RUN OVER 7 ');
+    //   cords.pop();
+    //   console.log('arr length', cords.length)
+    // } else if (amarillo.x < 350){
+    //   console.log('TEST RUNDER 4')
+    // }
+
+    // while (cords.length > 0) {
+    
+    var curX = amarillo.x
+    var curY = amarillo.y
+
+ 
+
+    for (var i = 0; i < cords.length; i++) {
+        var cordX = cords[i][0]
+        var cordY = cords[i][1]
+
+        console.log(curX - cordX);
+        // console.log('boat y', curY);
+        // console.log('OG COREDS', cords);
+        // console.log('life y', cordY)
+        // while (cords.length > 0) {
+          if (Math.abs(curX - cordX) < 2 || Math.abs(curY - cordY) < 2) {
+              console.log('HIT+++++')
+              console.log('life x', cordX);
+              console.log('boat x', curX);
+              console.log('boat y', curY);
+              console.log('life y', cordY)
+              
+              console.log('CORDS', cords.length)
+              cords.splice(i, 1)
+              console.log('CORDS cut', cords)
+          }
+        // }
+        // } else if (Math.abs(curY - cordY) < 5) {
+        //     console.log('Yhit')
+        //     console.log('life x', cordX);
+        //     console.log('boat x', curX);
+        //      console.log('boat y', curY);
+        //       console.log('life y', cordY)
+        //     // cords.splice(i, 1)
+        // }
     }
+
+    
 });
 
 // console.log(elem)
@@ -79,7 +120,11 @@ document.addEventListener('keydown', function(e) {
 // console.log('boat?', amarillo)
 
 /*
- * need  
+  now that ive found out a way to get live coordinates of the boat and coordinate of the lifejackets
+  next steps:
+    -make function that checks collision
+    -make a function that fills circles with ocean color in exact spot to cover the lifevest 
+    -also delete the coordinate from array to let game know when you're finished
 */ 
 
 // while (cords.length > 10) {
