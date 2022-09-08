@@ -11,29 +11,52 @@
     <link rel="stylesheet" href="src/styles/lifesaver.css">
     <script src="./dist/main.js"></script>
     <title>SpeedBoat Rescue</title>
+    <link rel="shortcut icon" type="image/x-icon" media="all" href="https://easystreet-misc.s3.amazonaws.com/boat.jpg">
 </head>
 <body>
 
     
     <div class="map">
-        <h1>Welcome to Speedboat Rescue!</h1> 
+      <h1>Welcome to Speedboat Rescue!</h1>
+      <h1>Rescue all the lifesavers by using the directional pad to steer your boat!</h1>
+      <h2>Left-handed Users please use the keys W(foward),A(left),S(reverse),D(right) at your convenience</h2> 
+      <h3><a href="https://github.com/davida11en" target="_blank">
+        Github
+        </a>
+        </h3>
+        <h3><a href="https://www.linkedin.com/in/david-allen-asencio-9107b0122/" target="_blank">
+           LinkedIn
+            </a>
+            </h3>
+            <h3><a href="https://angel.co/u/david-allen-asencio" target="_blank">
+                AngelList
+                </a>
+                </h3>     
+     <!-- <div className="time-container">
+        <div id="timer">00:00</div>
+        <button className="timerbutton" onclick="">Start</button>
+      </div> -->
         <div class="ocean">
-            <canvas id="screen"></canvas>
+          <canvas id="screen"></canvas>
             <div class="boats"></div>
-                <div class="driver">
-                    <div class="boatshape">
-                        <div class="boattop">
-                            <div class="lefthead">
-                                <div class="righthead">
-                                </div></div></div></div>  
-                                <div class="lifesaver">
-                                </div> 
+              <div class="driver">
+                <div class="boatshape">
+                  <div class="boattop">
+                    <div class="lefthead">
+                      <div class="righthead">
+                      </div>
+                    </div>
+                  </div>
+                </div>  
+                <div class="lifesaver">
+                </div> 
             </div>
         </div>
     </div>
 
     <div class="score"></div>
     <script src="src/scripts/controls.js"></script>
+    <!-- <script src="src/scripts/timer.js"></script> -->
     <script src="src/scripts/driver.js"></script>
     <script src="src/scripts/lifesaver.js"></script>
 </body>

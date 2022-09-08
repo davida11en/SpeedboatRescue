@@ -1,7 +1,7 @@
 var c,ltx;
 
 var x = 10;
-var cords = [];
+var cords = []; //lifejacket coordinates
 // onload=setInterval(stopit5,1000);
 
 // loads screen 
@@ -49,32 +49,24 @@ function drawCircle(rx,ry,rr){
   // console.log("BOAT DEETS", amarillo)
 }
 
+function fillCircle(cordx,cordy) {
+  var myColors = 'hsl(193, 100%, 46%)';
+  ltx.lineWidth = 20;
+  ltx.strokeStyle = myColors;
+  ltx.beginPath();
+  ltx.arc(cordx,cordy,10,0,2*Math.PI);
+  ltx.stroke();
+  ltx.closePath();
+}
+
+
 var elem = document.querySelector('.driver')
 let rect = elem.getBoundingClientRect();
-console.log('OG COREDS', cords);
+// console.log('OG COREDS', cords);
 // var copy = Object.assign
 
 document.addEventListener('keydown', function(e) {
-    // returning coordinates of boat
-    console.log('BOATX', amarillo.x)
-    console.log('BOATY', amarillo.y)
-    // console.log(getComputedStyle(elem))
-    // console.log('CORDS', cords)
-    // console.log('CORDS', cords.length)
-    // console.log('RY', ry)
-    // console.log(rect)
-
-
-    // if (amarillo.x > 700) {
-    //   console.log('TEST RUN OVER 7 ');
-    //   cords.pop();
-    //   console.log('arr length', cords.length)
-    // } else if (amarillo.x < 350){
-    //   console.log('TEST RUNDER 4')
-    // }
-
-    // while (cords.length > 0) {
-    
+    // startTimer(e)
     var curX = amarillo.x
     var curY = amarillo.y
 
@@ -84,84 +76,67 @@ document.addEventListener('keydown', function(e) {
         var cordX = cords[i][0]
         var cordY = cords[i][1]
 
-        console.log('life x', cordX); // life x 375
-        console.log('boat x', curX); // lifesaver.js:88 boat x 454.1293141041299
-        console.log('XCORD DIFF', Math.abs(curX - cordX)); // lifesaver.js:89 XCORD DIFF 79.12931410412989
-        console.log('boat y', curY); // lifesaver.js:90 boat y 573.1367017988306
-        console.log('life y', cordY) // lifesaver.js:91 life y 470
-        console.log('YCORD DIFF', Math.abs(curY - cordY)); //lifesaver.js:92 YCORD DIFF 103.13670179883059
-
-        
-
-
-
-
-
-
-        //      console.log('life x', cordX);
-        //       console.log('boat x', curX);
-        // console.log('XCORD DIFF', Math.abs(curX - cordX));
-        //                console.log('boat y', curY);
-        //       console.log('life y', cordY)
-        // console.log('YCORD DIFF', Math.abs(curY - cordY));
-        // console.log('boat y', curY);
-        // console.log('OG COREDS', cords);
-        // console.log('life y', cordY)
-        // while (cords.length > 0) {
-          // if (Math.abs(curX - cordX) < 2 || Math.abs(curY - cordY) < 2) {
-          //     console.log('HIT+++++')
-          //     console.log('life x', cordX);
-          //     console.log('boat x', curX);
-          //     console.log('XCORD DIFF', Math.abs(curX - cordX));
-          //     console.log('boat y', curY);
-          //     console.log('life y', cordY)
-     
-          //     console.log('CORDS', cords.length)
-          //     cords.splice(i, 1)
-          //     console.log('CORDS cut', cords)
-          //     console.log('CORDS', cords.length)
-          // }
-        // }
-        // } else if (Math.abs(curY - cordY) < 5) {
-        //     console.log('Yhit')
-        //     console.log('life x', cordX);
-        //     console.log('boat x', curX);
-        //      console.log('boat y', curY);
-        //       console.log('life y', cordY)
-        //     // cords.splice(i, 1)
-        // }
+        if ((Math.abs(curX - cordX) + Math.abs(curY - cordY)) < 80) {
+          // console.log('HIT')
+          // console.log('hitx', curX)
+          // console.log('hity', curY)
+          // console.log('life x', cordX);
+          // console.log('life x', cordY);
+          fillCircle(cordX, cordY)
+          // cords[i] = [null, null]
+        } 
     }
 
     
+    
 });
 
-// console.log(elem)
 
-// console.log('lookin for cords', cords);
-// console.log('boat?', amarillo)
 
-/*
-  now that ive found out a way to get live coordinates of the boat and coordinate of the lifejackets
-  next steps:
-    -make function that checks collision
-    -make a function that fills circles with ocean color in exact spot to cover the lifevest 
-    -also delete the coordinate from array to let game know when you're finished
-*/ 
 
-// while (cords.length > 10) {
-//     // console.log("is this thing on?")
-//     const curX = amarillo.x
-//     const curY = amarillo.y
 
-//     for (var i = 0; i < cords.length; i++) {
-//         let cordX = cords[i][0]
-//         let cordY = cords[i][1]
+const timer = document.getElementById("timer");
+let timerInterval;
 
-//         if (Math.abs(curX - cordX) < 10) {
-//             console.log('Xhit')
-//             cords.splice(i, 1)
-//         } else if (Math.abs(curY - cordY) < 10) {
-//             console.log('Yhit')
-//             cords.splice(i, 1)
-//         }
-//     }
+const startTimer = () => {
+  // Firs twe start by clearing the existing timer, in case of a restart
+  clearInterval(timerInterval);
+  // Then we clear the variables
+  let second = 0,
+    minute = 0,
+    hour = 0;
+
+  // Next we set a interval every 1000 ms
+  timerInterval = setInterval(function () {
+    // Toggle the odd class every interval
+  timer.classList.toggle('odd');
+
+    // We set the timer text to include a two digit representation
+    timer.innerHTML =
+      (hour ? hour + ":" : "") +
+      (minute < 10 ? "0" + minute : minute) +
+      ":" +
+      (second < 10 ? "0" + second : second);
+
+    // Next we add a new second since one second is passed
+    second++;
+
+    // We check if the second equals 60 "one minute"
+    if (second == 60) {
+      // If so, we add a minute and reset our seconds to 0
+      minute++;
+      second = 0;
+    }
+    // console.log(cords)
+    // If we hit 60 minutes "one hour" we reset the minutes and plus an hour
+    if (minute == 60) {
+      hour++;
+      minute = 0;
+    }
+  }, 1000);
+};
+
+
+
+// soon as the boat moves the time starts
+// soon as the 

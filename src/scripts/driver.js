@@ -272,3 +272,6 @@ function render(ms) {
 
 requestAnimationFrame(render);
 // ----------------------------render game end
+
+
+
